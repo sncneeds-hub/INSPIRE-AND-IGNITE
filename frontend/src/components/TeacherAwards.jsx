@@ -43,22 +43,66 @@ const TeacherAwards = () => {
     }
   ];
 
-  const schoolCategories = [
+  const schoolAwardCategories = [
     {
-      title: "Best Overall School",
-      icon: School,
-      color: "from-amber-400 to-orange-500",
-      bgColor: "bg-amber-50",
-      description: "Recognizing schools excelling in academic performance, co-curricular activities, infrastructure, and community involvement.",
-      criteria: ["Academic Excellence", "Co-curricular Programs", "Infrastructure Quality", "Community Engagement"]
+      categoryTitle: "Academic Excellence Awards",
+      color: "from-emerald-500 to-teal-600",
+      bgColor: "bg-emerald-50",
+      icon: GraduationCap,
+      awards: [
+        {
+          title: "Vidya Vardhanam (VV)",
+          description: "Awarded to schools demonstrating consistent growth and excellence in academic achievements."
+        },
+        {
+          title: "Gyana Shikhar (GS)",
+          description: "Recognizes schools that have reached the pinnacle of knowledge through outstanding student performance."
+        },
+        {
+          title: "Shiksha Pratibha (SP)",
+          description: "Honors schools nurturing exceptional talent and brilliance in education."
+        }
+      ]
     },
     {
-      title: "Best School for Promoting Arts & Creativity",
+      categoryTitle: "Innovation & Infrastructure Awards",
+      color: "from-indigo-500 to-purple-600",
+      bgColor: "bg-indigo-50",
       icon: Star,
-      color: "from-pink-400 to-rose-500",
-      bgColor: "bg-pink-50", 
-      description: "Honoring schools with dedicated initiatives, programs, and facilities for fostering artistic talent among students.",
-      criteria: ["Art Education Programs", "Creative Facilities", "Student Art Exhibitions", "Arts Integration"]
+      awards: [
+        {
+          title: "Navonmesh Vidyalaya (NV)",
+          description: "Given to schools pioneering innovative teaching methods and creative learning approaches."
+        },
+        {
+          title: "Adhunik Bhavanam (AB)",
+          description: "Recognizes schools with state-of-the-art infrastructure and excellent learning environments."
+        },
+        {
+          title: "Digital Jyoti (DJ)",
+          description: "Awarded to schools excelling in the use of digital technology and e-learning tools."
+        }
+      ]
+    },
+    {
+      categoryTitle: "Holistic Development Awards",
+      color: "from-amber-500 to-orange-600",
+      bgColor: "bg-amber-50",
+      icon: School,
+      awards: [
+        {
+          title: "Sarvanga Vikas Vidyalaya (SVV)",
+          description: "Honors schools promoting balanced growth in academics, sports, arts, and character building."
+        },
+        {
+          title: "Manav Seva Vidyalaya (MSV)",
+          description: "Given to schools actively encouraging social responsibility, inclusion, and community service."
+        },
+        {
+          title: "Samskara Vidyalaya (SkaV)",
+          description: "Recognizes schools fostering strong values, discipline, and cultural heritage among students."
+        }
+      ]
     }
   ];
 
