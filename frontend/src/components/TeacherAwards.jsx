@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
@@ -12,34 +12,121 @@ import {
   CheckCircle,
   Star,
   Calendar,
-  DollarSign
+  DollarSign,
+  Trophy,
+  Lightbulb,
+  Target
 } from 'lucide-react';
 
 const TeacherAwards = () => {
-  const teacherCategories = [
+  const [activeTeacherCategory, setActiveTeacherCategory] = useState(0);
+  const [activeSchoolCategory, setActiveSchoolCategory] = useState(0);
+
+  const teacherAwardCategories = [
     {
-      title: "Best Primary School Teacher",
-      grades: "Grades 1-7",
+      name: "Lifetime Excellence Awards",
+      icon: Trophy,
+      description: "Honoring long-term service, commitment, and impact",
+      color: "from-amber-400 to-orange-500",
+      bgColor: "bg-amber-50 border-amber-200",
+      awards: [
+        {
+          title: "Shikshan Ratna",
+          description: "For lifetime achievement and outstanding service."
+        },
+        {
+          title: "Guru Vandana Puraskar",
+          description: "For honoring retiring or senior-most educators."
+        },
+        {
+          title: "Shikshan Sadhak",
+          description: "For consistent, sincere dedication over many years."
+        }
+      ]
+    },
+    {
+      name: "Inspirational Teaching Awards",
       icon: Heart,
-      color: "from-emerald-400 to-teal-500",
-      bgColor: "bg-emerald-50",
-      description: "Recognizing excellence in foundational education and nurturing young minds during their crucial developmental years."
+      description: "For teachers who motivate, mentor, and uplift others",
+      color: "from-rose-400 to-pink-500",
+      bgColor: "bg-rose-50 border-rose-200",
+      awards: [
+        {
+          title: "Shikshan Jyoti",
+          description: "For being a guiding light and moral inspiration."
+        },
+        {
+          title: "Shikshan Prerana",
+          description: "For motivating and transforming student lives."
+        },
+        {
+          title: "Shikshan Bandhu",
+          description: "For building strong bonds with students and community."
+        }
+      ]
     },
     {
-      title: "Best Secondary School Teacher", 
-      grades: "Grades 8-10",
+      name: "Academic Excellence Awards",
       icon: GraduationCap,
-      color: "from-blue-400 to-indigo-500",
-      bgColor: "bg-blue-50",
-      description: "Honoring teachers who guide students through critical academic transitions and skill development phases."
+      description: "For subject-matter mastery, teaching quality, and student success",
+      color: "from-emerald-400 to-teal-500",
+      bgColor: "bg-emerald-50 border-emerald-200",
+      awards: [
+        {
+          title: "Shikshan Samrat",
+          description: "For mastery and leadership in teaching."
+        },
+        {
+          title: "Shikshan Parangat",
+          description: "For subject expertise and academic excellence."
+        },
+        {
+          title: "Adarsha Shikshaka",
+          description: "For being a role model in teaching and conduct."
+        }
+      ]
     },
     {
-      title: "Best Pre-University College Teacher",
-      grades: "Grades 11-12",
-      icon: Award,
-      color: "from-purple-400 to-violet-500", 
-      bgColor: "bg-purple-50",
-      description: "Celebrating educators who prepare students for higher education and career pathways with excellence."
+      name: "Innovation & Growth Awards",
+      icon: Lightbulb,
+      description: "For creativity, innovation, and continuous development",
+      color: "from-indigo-400 to-purple-500",
+      bgColor: "bg-indigo-50 border-indigo-200",
+      awards: [
+        {
+          title: "Shikshan Abhivardhan",
+          description: "For continuous professional growth."
+        },
+        {
+          title: "Shikshan Chaitanya",
+          description: "For bringing energy, creativity, and new ideas."
+        },
+        {
+          title: "Shikshan Vibhuti",
+          description: "For contributing to educational development or policy."
+        }
+      ]
+    },
+    {
+      name: "Social Contribution & Service Awards",
+      icon: Users,
+      description: "For teachers who go beyond the classroom to serve society",
+      color: "from-blue-400 to-cyan-500",
+      bgColor: "bg-blue-50 border-blue-200",
+      awards: [
+        {
+          title: "Shikshan Bhaskar",
+          description: "For positive influence and community upliftment."
+        },
+        {
+          title: "Shikshan Deepa",
+          description: "For dedicated service in challenging environments."
+        },
+        {
+          title: "Shikshan Sevak",
+          description: "For humble, selfless service to education."
+        }
+      ]
     }
   ];
 
@@ -47,7 +134,7 @@ const TeacherAwards = () => {
     {
       categoryTitle: "Academic Excellence Awards",
       color: "from-emerald-500 to-teal-600",
-      bgColor: "bg-emerald-50",
+      bgColor: "bg-emerald-50 border-emerald-200",
       icon: GraduationCap,
       awards: [
         {
@@ -67,7 +154,7 @@ const TeacherAwards = () => {
     {
       categoryTitle: "Innovation & Infrastructure Awards",
       color: "from-indigo-500 to-purple-600",
-      bgColor: "bg-indigo-50",
+      bgColor: "bg-indigo-50 border-indigo-200",
       icon: Star,
       awards: [
         {
@@ -87,7 +174,7 @@ const TeacherAwards = () => {
     {
       categoryTitle: "Holistic Development Awards",
       color: "from-amber-500 to-orange-600",
-      bgColor: "bg-amber-50",
+      bgColor: "bg-amber-50 border-amber-200",
       icon: School,
       awards: [
         {
