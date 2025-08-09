@@ -278,34 +278,67 @@ const TeacherAwards = () => {
 
         {/* Teacher Award Categories */}
         <div className="mb-20">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">Teacher Award Categories</h3>
-            <p className="text-lg text-slate-600">Honoring educational excellence across all academic levels</p>
+          <div className="flex justify-center mb-8">
+            <h3 className="text-3xl font-bold text-slate-900 relative">
+              Teacher Recognition Awards
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full"></div>
+            </h3>
           </div>
+          <p className="text-center text-lg text-slate-600 mb-8">Honoring educational excellence across multiple dimensions of teaching</p>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {teacherCategories.map((category, index) => {
+          {/* Teacher Category Selector */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {teacherAwardCategories.map((category, index) => {
               const IconComponent = category.icon;
               return (
-                <Card key={index} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer overflow-hidden">
-                  <CardContent className={`p-8 ${category.bgColor}`}>
-                    <div className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                      <IconComponent className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="text-xl font-bold text-slate-900 text-center mb-2">
-                      {category.title}
-                    </h4>
-                    <Badge variant="outline" className="mx-auto block w-fit mb-4">
-                      {category.grades}
-                    </Badge>
-                    <p className="text-slate-700 text-center leading-relaxed">
-                      {category.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <Button
+                  key={index}
+                  onClick={() => setActiveTeacherCategory(index)}
+                  variant={activeTeacherCategory === index ? "default" : "outline"}
+                  className={`px-6 py-3 rounded-full transition-all duration-300 flex items-center gap-2 ${
+                    activeTeacherCategory === index 
+                      ? `bg-gradient-to-r ${category.color} text-white shadow-lg transform scale-105` 
+                      : "hover:bg-slate-100"
+                  }`}
+                >
+                  <IconComponent className="w-4 h-4" />
+                  {category.name}
+                </Button>
               );
             })}
           </div>
+
+          {/* Active Teacher Category Details */}
+          <Card className="max-w-6xl mx-auto overflow-hidden shadow-xl">
+            <CardContent className={`p-8 ${teacherAwardCategories[activeTeacherCategory].bgColor}`}>
+              <div className="text-center mb-8">
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r ${teacherAwardCategories[activeTeacherCategory].color} text-white text-2xl mb-4 shadow-lg`}>
+                  {React.createElement(teacherAwardCategories[activeTeacherCategory].icon, { className: "w-8 h-8" })}
+                </div>
+                <h4 className="text-3xl font-bold text-slate-900 mb-2">
+                  {teacherAwardCategories[activeTeacherCategory].name}
+                </h4>
+                <p className="text-lg text-slate-700 mb-6">
+                  {teacherAwardCategories[activeTeacherCategory].description}
+                </p>
+              </div>
+
+              {/* Awards Grid */}
+              <div className="grid md:grid-cols-3 gap-6">
+                {teacherAwardCategories[activeTeacherCategory].awards.map((award, awardIndex) => (
+                  <Card key={awardIndex} className="bg-white shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <CardContent className="p-6 text-center">
+                      <div className={`w-12 h-12 bg-gradient-to-r ${teacherAwardCategories[activeTeacherCategory].color} rounded-full flex items-center justify-center mx-auto mb-4 shadow-md`}>
+                        <Award className="w-6 h-6 text-white" />
+                      </div>
+                      <h5 className="text-xl font-bold text-slate-900 mb-3">{award.title}</h5>
+                      <p className="text-slate-700 leading-relaxed">{award.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* School Award Categories */}
