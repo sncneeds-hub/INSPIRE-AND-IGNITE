@@ -32,6 +32,7 @@ async def root():
 app.include_router(auth.router)
 app.include_router(school.router) 
 app.include_router(voting.router)
+app.include_router(admin.router)
 
 # Include the original API router
 app.include_router(api_router)
