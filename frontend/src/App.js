@@ -5,6 +5,10 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import DrawingCompetition from "./components/DrawingCompetition";
 import TeacherAwards from "./components/TeacherAwards";
+import Timeline from "./components/Timeline";
+import Prizes from "./components/Prizes";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import { Toaster } from "./components/ui/toaster";
 
 const Home = () => {
@@ -17,7 +21,11 @@ const Home = () => {
         </section>
         <DrawingCompetition />
         <TeacherAwards />
+        <Timeline />
+        <Prizes />
+        <Contact />
       </main>
+      <Footer />
     </div>
   );
 };
