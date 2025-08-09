@@ -225,34 +225,43 @@ const TeacherAwards = () => {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-slate-900 mb-4">School Award Categories</h3>
-            <p className="text-lg text-slate-600">Celebrating institutional excellence and creative leadership</p>
+            <p className="text-lg text-slate-600">Celebrating institutional excellence across multiple dimensions</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {schoolCategories.map((category, index) => {
-              const IconComponent = category.icon;
+          <div className="space-y-12">
+            {schoolAwardCategories.map((category, categoryIndex) => {
+              const CategoryIcon = category.icon;
               return (
-                <Card key={index} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer">
-                  <CardContent className={`p-8 ${category.bgColor}`}>
-                    <div className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                      <IconComponent className="w-8 h-8 text-white" />
+                <div key={categoryIndex} className="max-w-6xl mx-auto">
+                  {/* Category Header */}
+                  <div className="text-center mb-8">
+                    <div className={`inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r ${category.color} text-white rounded-full shadow-lg mb-4`}>
+                      <CategoryIcon className="w-6 h-6" />
+                      <h4 className="text-xl font-bold">{category.categoryTitle}</h4>
                     </div>
-                    <h4 className="text-2xl font-bold text-slate-900 text-center mb-4">
-                      {category.title}
-                    </h4>
-                    <p className="text-slate-700 text-center mb-6 leading-relaxed">
-                      {category.description}
-                    </p>
-                    <div className="space-y-2">
-                      {category.criteria.map((criterion, idx) => (
-                        <div key={idx} className="flex items-center gap-3 bg-white rounded-lg p-3 shadow-sm">
-                          <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                          <span className="text-slate-700 text-sm">{criterion}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                  </div>
+
+                  {/* Awards Grid */}
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {category.awards.map((award, awardIndex) => (
+                      <Card key={awardIndex} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full">
+                        <CardContent className={`p-8 ${category.bgColor} h-full flex flex-col`}>
+                          <div className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                            <CategoryIcon className="w-8 h-8 text-white" />
+                          </div>
+                          
+                          <h5 className="text-xl font-bold text-slate-900 text-center mb-4 flex-shrink-0">
+                            {award.title}
+                          </h5>
+                          
+                          <p className="text-slate-700 text-center leading-relaxed flex-grow">
+                            {award.description}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
               );
             })}
           </div>
