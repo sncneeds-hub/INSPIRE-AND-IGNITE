@@ -12,7 +12,7 @@ from datetime import datetime
 
 # Import our new modules
 from database import connect_to_mongo, close_mongo_connection
-from routes import auth, school, voting
+from routes import auth, school, voting, admin
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
